@@ -3,10 +3,10 @@ from collections import Counter
 from pathlib import Path
 
 
-file_path = Path("NewsArticlePython.md")
-text = file_path.read_text(encoding="utf-8")
+# file_path = Path("NewsArticlePython.md")
+# text = file_path.read_text(encoding="utf-8")
 
-
+text = ""
 def count_specific_word(text, search_word):
     words = re.findall(r"\b\w+\b", text.lower())
 
