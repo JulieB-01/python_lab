@@ -51,7 +51,7 @@ def calculate_average_word_length(text):
 
 def count_paragraphs(text):
     if text.strip() == "":
-        return 0
+        return 1
     else:
         paragraphs = [p for p in text.split("\n\n") if p.strip()]
         return len(paragraphs)
@@ -60,7 +60,7 @@ def count_paragraphs(text):
 
 def count_sentences(text):
     if text.strip() == "":
-        return 0
+        return 1
     else:
         sentences = re.split(r"[.!?]+", text)
         sentences = [s for s in sentences if s.strip()]
