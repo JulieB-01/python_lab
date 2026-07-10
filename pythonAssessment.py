@@ -6,7 +6,7 @@ from pathlib import Path
 # file_path = Path("NewsArticlePython.md")
 # text = file_path.read_text(encoding="utf-8")
 
-text = input("")
+
 def count_specific_word(text, search_word):
     words = re.findall(r"\b\w+\b", text.lower())
 
@@ -51,7 +51,7 @@ def calculate_average_word_length(text):
 
 def count_paragraphs(text):
     if text.strip() == "":
-        return 1
+        return 0
     else:
         paragraphs = [p for p in text.split("\n\n") if p.strip()]
         return len(paragraphs)
@@ -60,31 +60,36 @@ def count_paragraphs(text):
 
 def count_sentences(text):
     if text.strip() == "":
-        return 1
+        return 0
     else:
         sentences = re.split(r"[.!?]+", text)
         sentences = [s for s in sentences if s.strip()]
         return len(sentences)
 
 
+def main():
+    text = input("")
+    while True:
+        search_word = input("Enter the word to search for: ").strip()
+
+        if search_word == "":
+            print("Please enter a valid word.")
+        else:
+            break
+
+    count = count_specific_word(text, search_word)
+    most_common = identify_most_common_word(text)
+    average_length = calculate_average_word_length(text)
+    paragraphs = count_paragraphs(text)
+    sentences = count_sentences(text)
+
+    print(f"\n'{search_word}' shows up {count} times.")
+    print(f"The most common word is '{most_common}'.")
+    print(f"The average word length is {average_length:.2f}.")
+    print(f"There are {paragraphs} paragraphs.")
+    print(f"There are {sentences} sentences.")
 
 
-while True:  
-    search_word = input("Enter the word to search for: ").strip()
+if __name__ == "__main__":
+    main()
 
-    if search_word == "":
-        print("Please enter a valid word.")
-    else:
-        break
-
-count = count_specific_word(text, search_word)
-most_common = identify_most_common_word(text)
-average_length = calculate_average_word_length(text)
-paragraphs = count_paragraphs(text)
-sentences = count_sentences(text)
-
-print(f"\n'{search_word}' shows up {count} times.")
-print(f"The most common word is '{most_common}'.")
-print(f"The average word length is {average_length:.2f}.")
-print(f"There are {paragraphs} paragraphs.")
-print(f"There are {sentences} sentences.")
